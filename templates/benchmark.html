@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+{% block title %}ParallelNews — Benchmark{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Benchmark de rendimiento</h1>
+  <p>Comparacion secuencial vs paralelo — speedup, eficiencia y throughput</p>
+</div>
+
+<div style="margin-bottom:1.5rem">
+  <button class="btn btn-primary" id="btn-bench" onclick="doBenchmark()">
+    <span id="bench-icon">&#9654;</span> Ejecutar benchmark completo
+  </button>
+  <span id="bench-note" style="font-size:13px;color:var(--muted);margin-left:1rem">
+    Corre secuencial + paralelo con 2, 4, 6 y 8 workers (~2 min)
+  </span>
+</div>
+
+<!-- Resultado secuencial vs paralelo destacado -->
+<div id="compare" style="display:none;margin-bottom:2rem">
+  <div class="stats-row">
+    <div class="stat-card" style="border-color:var(--warn)">
+      <div class="label">Tiempo secuencial</div>
+      <div class="value" id="seq-time" style="color:var(--warn)">—<span class="unit"> s</span></div>
+    </div>
+    <div class="stat-card" style="border-color:var(--success)">
+      <div class="label">Mejor tiempo paralelo</div>
+      <div class="value" id="par-time" style="color:var(--success)">—<span class="unit"> s</span></div>
+    </div>
+    <div class="stat-card" style="border-color:var(--accent)">
+      <div class="label">Mejor speedup</div>
+      <div class="value" id="best-speedup" style="color:var(--accent)">—<span class="unit">×</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Mejor eficiencia</div>
+      <div class="value" id="best-eff">—<span class="unit"> %</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Tabla de resultados por numero de workers -->
+<div id="table-wrap" style="display:none;margin-bottom:2rem">
+  <h2 style="font-size:16px;font-weight:600;margin-bottom:1rem">Resultados por configuracion</h2>
+  <div style="overflow-x:auto">
+    <table id="bench-table" style="width:100%;border-collapse:collapse;font-size:14px">
+      <thead>
+        <tr style="border-bottom:1px solid var(--border);color:var(--muted);font-size:12px;text-align:left">
+          <th style="padding:8px 12px">Modo</th>
+          <th style="padding:8px 12px">Workers</th>
+          <th style="padding:8px 12px">Tiempo (s)</th>
+          <th style="padding:8px 12px">Speedup</th>
+          <th style="padding:8px 12px">Eficiencia</th>
+          <th style="padding:8px 12px">Throughput</th>
+          <th style="padding:8px 12px">OK / Error</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Graficas -->
+<div id="charts-wrap" style="display:none">
+  <h2 style="font-size:16px;font-weight:600;margin-bottom:1rem">Graficas</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <!-- Speedup chart (Chart.js) -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-r);padding:1.25rem">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Speedup vs workers</p>
+      <canvas id="chartSpeedup" height="220"></canvas>
+    </div>
+    <!-- Tiempo por workers -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-r);padding:1.25rem">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Tiempo total por configuracion</p>
+      <canvas id="chartTime" height="220"></canvas>
+    </div>
+    <!-- Eficiencia -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-r);padding:1.25rem">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Eficiencia paralela (%)</p>
+      <canvas id="chartEff" height="220"></canvas>
+    </div>
+    <!-- Throughput -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-r);padding:1.25rem">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Throughput (feeds/s)</p>
+      <canvas id="chartTp" height="220"></canvas>
+    </div>
+  </div>
+
+  <!-- Imagenes PNG de matplotlib (generadas por metrics.py) -->
+  <h2 style="font-size:16px;font-weight:600;margin:2rem 0 1rem">Graficas exportadas (matplotlib)</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-r);padding:1rem">
+      <img src="/results/speedup.png" alt="Speedup chart"
+           style="width:100%;border-radius:8px" onerror="this.style.display='none'">
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--card-r);padding:1rem">
+      <img src="/results/per_site.png" alt="Per-site chart"
+           style="width:100%;border-radius:8px" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- Estado del proceso -->
+<div id="bench-status" style="display:none;padding:2rem;text-align:center;color:var(--muted)">
+  <div class="spinner" style="margin:0 auto 1rem"></div>
+  <p id="status-msg">Ejecutando benchmark...</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+  Chart.defaults.color = '#7c8099';
+  Chart.defaults.borderColor = '#2e3248';
+  Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+  Chart.defaults.font.size = 12;
+
+  let charts = {};
+
+  function destroyCharts() {
+    Object.values(charts).forEach(c => c.destroy());
+    charts = {};
+  }
+
+  function buildCharts(seq, parallel) {
+    destroyCharts();
+    const workers = parallel.map(d => d.workers);
+    const ideal   = workers.map(w => w);
+    const speedups = parallel.map(d => d.speedup);
+    const times    = parallel.map(d => d.time_s);
+    const effs     = parallel.map(d => d.efficiency);
+    const tps      = parallel.map(d => d.throughput);
+
+    const base = {
+      responsive: true,
+      plugins: { legend: { labels: { boxWidth: 12 } } },
+      scales: {
+        x: { grid: { color: '#2e3248' } },
+        y: { grid: { color: '#2e3248' } }
+      }
+    };
+
+    // Speedup
+    charts.speedup = new Chart(document.getElementById('chartSpeedup'), {
+      type: 'line',
+      data: {
+        labels: workers,
+        datasets: [
+          { label: 'Ideal',  data: ideal,   borderColor: '#3a3f5c', borderDash: [5,5], pointRadius: 0, fill: false },
+          { label: 'Real',   data: speedups, borderColor: '#6c63ff', backgroundColor: '#6c63ff33',
+            pointBackgroundColor: '#6c63ff', fill: true, tension: .3 }
+        ]
+      },
+      options: { ...base, scales: { ...base.scales,
+        x: { ...base.scales.x, title: { display: true, text: 'Workers' } },
+        y: { ...base.scales.y, title: { display: true, text: 'Speedup (x)' } }
+      }}
+    });
+
+    // Tiempo
+    charts.time = new Chart(document.getElementById('chartTime'), {
+      type: 'bar',
+      data: {
+        labels: ['Secuencial', ...workers.map(w => `${w} workers`)],
+        datasets: [{
+          label: 'Tiempo (s)',
+          data: [seq.time_s, ...times],
+          backgroundColor: ['#ffb84d55', ...times.map(() => '#6c63ff55')],
+          borderColor:     ['#ffb84d',   ...times.map(() => '#6c63ff')],
+          borderWidth: 1, borderRadius: 6
+        }]
+      },
+      options: { ...base, plugins: { legend: { display: false } },
+        scales: { ...base.scales, y: { ...base.scales.y, title: { display: true, text: 'Segundos' } } }
+      }
+    });
+
+    // Eficiencia
+    charts.eff = new Chart(document.getElementById('chartEff'), {
+      type: 'bar',
+      data: {
+        labels: workers.map(w => `${w} workers`),
+        datasets: [{
+          label: 'Eficiencia (%)',
+          data: effs,
+          backgroundColor: effs.map(e => e >= 70 ? '#00d4aa55' : '#ff5c6c55'),
+          borderColor:     effs.map(e => e >= 70 ? '#00d4aa'   : '#ff5c6c'),
+          borderWidth: 1, borderRadius: 6
+        }]
+      },
+      options: { ...base, plugins: { legend: { display: false } },
+        scales: { ...base.scales,
+          y: { ...base.scales.y, max: 100, title: { display: true, text: '%' } }
+        }
+      }
+    });
+
+    // Throughput
+    charts.tp = new Chart(document.getElementById('chartTp'), {
+      type: 'line',
+      data: {
+        labels: ['Secuencial', ...workers.map(w => `${w} workers`)],
+        datasets: [{
+          label: 'Feeds/s',
+          data: [seq.throughput, ...tps],
+          borderColor: '#00d4aa', backgroundColor: '#00d4aa22',
+          pointBackgroundColor: '#00d4aa', fill: true, tension: .3
+        }]
+      },
+      options: { ...base,
+        scales: { ...base.scales, y: { ...base.scales.y, title: { display: true, text: 'feeds/s' } } }
+      }
+    });
+  }
+
+  function renderTable(seq, parallel) {
+    const tbody = document.getElementById('table-body');
+    const seqRow = `
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:10px 12px"><span class="badge" style="background:#2d2416;color:var(--warn)">Secuencial</span></td>
+        <td style="padding:10px 12px">1</td>
+        <td style="padding:10px 12px">${seq.time_s}</td>
+        <td style="padding:10px 12px">1.00×</td>
+        <td style="padding:10px 12px">100%</td>
+        <td style="padding:10px 12px">${seq.throughput}</td>
+        <td style="padding:10px 12px">
+          <span class="badge badge-ok">${seq.successful} OK</span>
+          <span class="badge badge-err">${seq.failed} err</span>
+        </td>
+      </tr>`;
+    const parRows = parallel.map(d => `
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:10px 12px"><span class="badge" style="background:#1e1a3a;color:var(--accent)">Paralelo</span></td>
+        <td style="padding:10px 12px">${d.workers}</td>
+        <td style="padding:10px 12px">${d.time_s}</td>
+        <td style="padding:10px 12px;color:var(--accent);font-weight:600">${d.speedup}×</td>
+        <td style="padding:10px 12px">${d.efficiency}%</td>
+        <td style="padding:10px 12px">${d.throughput}</td>
+        <td style="padding:10px 12px">
+          <span class="badge badge-ok">${d.successful} OK</span>
+          <span class="badge badge-err">${d.failed} err</span>
+        </td>
+      </tr>`).join('');
+    tbody.innerHTML = seqRow + parRows;
+  }
+
+  async function doBenchmark() {
+    const btn = document.getElementById('btn-bench');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Ejecutando...';
+
+    document.getElementById('compare').style.display     = 'none';
+    document.getElementById('table-wrap').style.display  = 'none';
+    document.getElementById('charts-wrap').style.display = 'none';
+    document.getElementById('bench-status').style.display = 'block';
+    document.getElementById('status-msg').textContent = 'Corriendo version secuencial...';
+
+    try {
+      document.getElementById('status-msg').textContent = 'Corriendo 2, 4, 6 y 8 workers...';
+      const res  = await fetch('/api/benchmark');
+      const data = await res.json();
+
+      const seq = data.sequential;
+      const par = data.parallel;
+      const best = par.reduce((a, b) => a.speedup > b.speedup ? a : b);
+
+      // Llenar compare stats
+      document.getElementById('seq-time').innerHTML     = `${seq.time_s}<span class="unit"> s</span>`;
+      document.getElementById('par-time').innerHTML     = `${Math.min(...par.map(d=>d.time_s))}<span class="unit"> s</span>`;
+      document.getElementById('best-speedup').innerHTML = `${best.speedup}<span class="unit">×</span>`;
+      document.getElementById('best-eff').innerHTML     = `${best.efficiency}<span class="unit"> %</span>`;
+
+      renderTable(seq, par);
+      buildCharts(seq, par);
+
+      document.getElementById('bench-status').style.display  = 'none';
+      document.getElementById('compare').style.display       = 'block';
+      document.getElementById('table-wrap').style.display    = 'block';
+      document.getElementById('charts-wrap').style.display   = 'block';
+
+      showToast(`✓ Benchmark completo — mejor speedup: ${best.speedup}×`);
+    } catch(e) {
+      document.getElementById('status-msg').textContent = 'Error al ejecutar benchmark';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '&#9654; Ejecutar benchmark completo';
+    }
+  }
+</script>
+{% endblock %}

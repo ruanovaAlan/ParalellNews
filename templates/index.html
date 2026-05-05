@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% block title %}ParallelNews — Noticias Tech/IA{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Noticias Tech &amp; IA</h1>
+  <p>Scrape paralelo en tiempo real de {{ feeds }} fuentes usando {{ workers }} hilos</p>
+</div>
+
+<!-- Stats row (se llena con JS) -->
+<div class="stats-row" id="stats" style="display:none">
+  <div class="stat-card">
+    <div class="label">Articulos</div>
+    <div class="value" id="st-articles">—</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Fuentes OK</div>
+    <div class="value" id="st-ok" style="color:var(--success)">—</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Fuentes con error</div>
+    <div class="value" id="st-fail" style="color:var(--danger)">—</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Tiempo total</div>
+    <div class="value" id="st-time">—<span class="unit"> s</span></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Throughput</div>
+    <div class="value" id="st-tp">—<span class="unit"> feeds/s</span></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Workers activos</div>
+    <div class="value" id="st-workers">—</div>
+  </div>
+</div>
+
+<!-- Toolbar -->
+<div style="display:flex; gap:12px; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap">
+  <button class="btn btn-primary" id="btn-scrape" onclick="doScrape()">
+    <span id="btn-icon">&#8635;</span> Scrapear ahora
+  </button>
+  <input id="search" type="text" placeholder="Filtrar noticias..."
+    style="flex:1; min-width:200px; padding:9px 14px; background:var(--surface);
+           border:1px solid var(--border); border-radius:var(--radius);
+           color:var(--text); font-size:14px; outline:none;"
+    oninput="filterCards()">
+  <select id="lang-filter" onchange="filterCards()"
+    style="padding:9px 12px; background:var(--surface); border:1px solid var(--border);
+           border-radius:var(--radius); color:var(--text); font-size:14px; cursor:pointer">
+    <option value="all">Todos los idiomas</option>
+    <option value="en">English</option>
+    <option value="es">Español</option>
+  </select>
+</div>
+
+<!-- Grid de cards -->
+<div id="grid" style="
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+"></div>
+
+<style>
+  .news-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-r);
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color .15s, transform .15s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .news-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .news-card .site  { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .5px; text-transform: uppercase; }
+  .news-card .title { font-size: 14px; font-weight: 600; line-height: 1.45; color: var(--text); }
+  .news-card .meta  { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-top: auto; padding-top: 4px; }
+  .news-card .date  { font-size: 11px; color: var(--muted); }
+  .news-card .thread-pill {
+    font-size: 10px; color: var(--accent); background: #1e1a3a;
+    padding: 1px 7px; border-radius: 20px; font-family: monospace;
+  }
+  .news-card.error-card { border-color: var(--danger); opacity: .7; }
+
+  /* Skeleton cards */
+  .skel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-r);
+    padding: 1rem 1.2rem;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+</style>
+
+<script>
+  let allArticles = [];
+
+  function showSkeletons(n = 12) {
+    const grid = document.getElementById('grid');
+    grid.innerHTML = Array.from({length: n}, () => `
+      <div class="skel-card">
+        <div class="skeleton" style="height:12px;width:60%"></div>
+        <div class="skeleton" style="height:16px;width:95%"></div>
+        <div class="skeleton" style="height:16px;width:80%"></div>
+        <div class="skeleton" style="height:11px;width:40%;margin-top:4px"></div>
+      </div>
+    `).join('');
+  }
+
+  function renderCards(articles) {
+    const grid = document.getElementById('grid');
+    if (!articles.length) {
+      grid.innerHTML = '<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:3rem 0">Sin resultados</p>';
+      return;
+    }
+    grid.innerHTML = articles.map(a => {
+      const langBadge = `<span class="badge badge-${a.lang}">${a.lang.toUpperCase()}</span>`;
+      const date = a.published ? `<span class="date">${a.published.slice(0,16)}</span>` : '';
+      const thread = `<span class="thread-pill">${a.thread}</span>`;
+      return `
+        <a class="news-card" href="${a.link || '#'}" target="_blank" rel="noopener"
+           data-lang="${a.lang}" data-title="${a.title.toLowerCase()}" data-site="${a.site.toLowerCase()}">
+          <span class="site">${a.site}</span>
+          <span class="title">${a.title}</span>
+          <div class="meta">${langBadge}${date}${thread}</div>
+        </a>`;
+    }).join('');
+  }
+
+  function filterCards() {
+    const q    = document.getElementById('search').value.toLowerCase();
+    const lang = document.getElementById('lang-filter').value;
+    const filtered = allArticles.filter(a => {
+      const matchLang  = lang === 'all' || a.lang === lang;
+      const matchQuery = !q || a.title.toLowerCase().includes(q) || a.site.toLowerCase().includes(q);
+      return matchLang && matchQuery;
+    });
+    renderCards(filtered);
+  }
+
+  async function doScrape() {
+    const btn = document.getElementById('btn-scrape');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Scrapeando...';
+    document.getElementById('stats').style.display = 'none';
+    showSkeletons();
+
+    try {
+      const res  = await fetch('/api/scrape');
+      const data = await res.json();
+
+      allArticles = data.articles;
+      filterCards();
+
+      const m = data.metrics;
+      document.getElementById('st-articles').textContent = allArticles.length;
+      document.getElementById('st-ok').textContent       = m.successful;
+      document.getElementById('st-fail').textContent     = m.failed;
+      document.getElementById('st-time').innerHTML       = `${m.total_time_s}<span class="unit"> s</span>`;
+      document.getElementById('st-tp').innerHTML         = `${m.throughput}<span class="unit"> feeds/s</span>`;
+      document.getElementById('st-workers').textContent  = m.num_workers;
+      document.getElementById('stats').style.display     = 'grid';
+
+      showToast(`✓ ${allArticles.length} articulos en ${m.total_time_s}s`);
+    } catch(e) {
+      document.getElementById('grid').innerHTML =
+        '<p style="color:var(--danger);grid-column:1/-1;text-align:center;padding:3rem 0">Error al conectar con el servidor</p>';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '&#8635; Scrapear ahora';
+    }
+  }
+
+  // Auto-scrape al cargar
+  doScrape();
+</script>
+{% endblock %}
