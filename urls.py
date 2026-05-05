@@ -28,7 +28,7 @@ SOURCES = [
     },
     {
         "site": "BBC Mundo Tecnologia",
-        "url": "https://feeds.bbci.co.uk/mundo/rss.xml",
+        "url": "https://www.bbc.com/mundo/temas/tecnologia/index.xml",
         "lang": "es",
     },
 
