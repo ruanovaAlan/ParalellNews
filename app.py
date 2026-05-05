@@ -17,7 +17,8 @@ from metrics import RunMetrics, Timer, save_results, plot_speedup, plot_per_site
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(threadName)s] %(message)s")
-RESULTS_DIR = "results"
+BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
+RESULTS_DIR = os.path.join(BASE_DIR, "results")
 NUM_WORKERS = 6
 
 
