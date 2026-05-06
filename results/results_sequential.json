@@ -3,60 +3,60 @@
     "mode": "sequential",
     "num_workers": 1,
     "total_urls": 12,
-    "successful": 10,
-    "failed": 2,
-    "total_time_s": 8.06,
-    "throughput_urls_s": 1.489,
+    "successful": 9,
+    "failed": 3,
+    "total_time_s": 4.847,
+    "throughput_urls_s": 2.476,
     "speedup": 1.0,
     "efficiency": 1.0,
     "per_site": [
       {
         "site": "Xataka",
-        "time": 0.507
+        "time": 0.349
       },
       {
         "site": "Hipertextual",
-        "time": 0.605
+        "time": 0.514
       },
       {
         "site": "El Pais Tecnologia",
-        "time": 0.666
+        "time": 0.521
       },
       {
         "site": "BBC Mundo Tecnologia",
-        "time": 0.531
+        "time": 0.516
       },
       {
         "site": "TechCrunch AI",
-        "time": 0.303
+        "time": 0.195
       },
       {
         "site": "VentureBeat AI",
-        "time": 0.854
+        "time": 0.701
       },
       {
         "site": "The Verge AI",
-        "time": 0.561
+        "time": 0.324
       },
       {
         "site": "Ars Technica",
-        "time": 0.906
+        "time": 0.262
       },
       {
         "site": "Wired AI",
-        "time": 0.444
+        "time": 0.218
       },
       {
         "site": "MIT Tech Review",
-        "time": 0.413
+        "time": 0.304
       },
       {
         "site": "MarkTechPost",
-        "time": 0.538
+        "time": 0.188
       },
       {
         "site": "TNW Neural",
-        "time": 1.733
+        "time": 0.754
       }
     ]
   },
@@ -69,7 +69,7 @@
       "links": [],
       "published": [],
       "error": "XML invalido sin entradas recuperables: <unknown>:2:0: unbound prefix",
-      "duration_s": 0.507,
+      "duration_s": 0.349,
       "thread": "MainThread",
       "total_items_in_feed": 0
     },
@@ -81,7 +81,7 @@
       "links": [],
       "published": [],
       "error": "XML invalido sin entradas recuperables: <unknown>:47:3: mismatched tag",
-      "duration_s": 0.605,
+      "duration_s": 0.514,
       "thread": "MainThread",
       "total_items_in_feed": 0
     },
@@ -90,115 +90,115 @@
       "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/tecnologia/portada",
       "lang": "es",
       "headlines": [
+        "TikTok ayudó a Trump a ganar las elecciones de 2024, cuando la red se jugaba su futuro en EE UU",
+        "Meta examinará la estructura ósea y la altura de los usuarios para detectar si son menores",
         "Hay chats privados de IA en abierto por internet: los crecientes riesgos para la privacidad de los principales chatbots",
         "Las erratas como símbolo de prestigio: cómo escribir para que no parezca IA",
         "Pablo Jarillo Herrero, físico: “Hemos encontrado la piedra filosofal inversa, el material que se convierte en todas las cosas”",
         "Luchas de poder, avaricia, guerra y ‘tecnofascismo’: la IA se quita la careta",
         "Claude Mythos: la IA frente a la ciberdelincuencia a escala y los límites de la seguridad nacional",
-        "Los amos de la IA en la sombra",
-        "Por qué a la IA le gustan tanto los duendecillos y Japón",
-        "España se coloca en el centro de la lucha mundial contra el odio online: “Los grupos xenófobos están bien asesorados”"
+        "Los amos de la IA en la sombra"
       ],
       "links": [
+        "https://elpais.com/tecnologia/2026-06-05/tiktok-ayudo-a-trump-a-ganar-las-elecciones-de-2024-cuando-la-red-se-jugaba-su-futuro-en-ee-uu.html",
+        "https://elpais.com/tecnologia/2026-05-06/meta-examinara-la-estructura-osea-y-la-altura-de-los-usuarios-para-detectar-si-son-menores.html",
         "https://elpais.com/tecnologia/2026-05-05/hay-chats-privados-de-ia-en-abierto-por-internet-los-crecientes-riesgos-para-la-privacidad-de-los-principales-chatbots.html",
         "https://elpais.com/tecnologia/2026-05-05/las-erratas-como-simbolo-de-prestigio-como-escribir-para-que-no-parezca-ia.html",
         "https://elpais.com/tecnologia/2026-05-04/pablo-jarillo-herrero-fisico-hemos-encontrado-la-piedra-filosofal-inversa-el-material-que-se-convierte-en-todas-las-cosas.html",
         "https://elpais.com/tecnologia/2026-05-03/luchas-de-poder-avaricia-guerra-y-tecnofascismo-la-ia-se-quita-la-careta.html",
         "https://elpais.com/tecnologia/2026-05-03/claude-mythos-la-ia-frente-a-la-ciberdelincuencia-a-escala-y-los-limites-de-la-seguridad-nacional.html",
-        "https://elpais.com/tecnologia/2026-05-03/los-amos-de-la-ia-en-la-sombra.html",
-        "https://elpais.com/tecnologia/2026-05-02/por-que-a-la-ia-le-gustan-tanto-los-duendecillos-y-japon.html",
-        "https://elpais.com/tecnologia/2026-05-01/espana-se-coloca-en-el-centro-de-la-lucha-mundial-contra-el-odio-online-los-grupos-xenofobos-estan-bien-asesorados.html"
+        "https://elpais.com/tecnologia/2026-05-03/los-amos-de-la-ia-en-la-sombra.html"
       ],
       "published": [
+        "Wed, 06 May 2026 15:05:01 GMT",
+        "Wed, 06 May 2026 10:46:55 GMT",
         "Tue, 05 May 2026 11:51:32 GMT",
         "Tue, 05 May 2026 03:30:01 GMT",
         "Mon, 04 May 2026 03:30:00 GMT",
         "Sun, 03 May 2026 03:30:00 GMT",
         "Sun, 03 May 2026 03:30:00 GMT",
-        "Sun, 03 May 2026 03:30:00 GMT",
-        "Sat, 02 May 2026 03:30:01 GMT",
-        "Fri, 01 May 2026 03:30:01 GMT"
+        "Sun, 03 May 2026 03:30:00 GMT"
       ],
       "error": null,
-      "duration_s": 0.666,
+      "duration_s": 0.521,
       "thread": "MainThread",
       "total_items_in_feed": 16
     },
     {
       "site": "BBC Mundo Tecnologia",
-      "url": "https://feeds.bbci.co.uk/mundo/rss.xml",
+      "url": "https://www.bbc.com/mundo/temas/tecnologia/index.xml",
       "lang": "es",
       "headlines": [
-        "Cómo Ucrania logró volver a su favor el tremendo impacto de la guerra en Irán",
-        "La drástica caída de homicidios que convierte a Zacatecas en un ejemplo para México (y las dudas de su población)",
-        "\"Somos personas, no solo noticia\": el clamor de los pasajeros atrapados en el crucero afectado por el hantavirus",
-        "Por qué Alberta, la provincia más rica de Canadá, se está rebelando y quiere independizarse del país",
-        "¿En qué medida nuestra personalidad viene determinada desde el nacimiento?",
-        "Por qué la adopción de un niño en Uruguay se volvió un asunto político en Italia y es investigada en los dos países",
-        "Met Gala 2026: así desfilaron las celebridades en la extravagante cita de la moda en Nueva York",
-        "\"Pagar impuestos es nuestro deber\": la familia que controla el imperio Samsung en Corea del Sur paga una cifra récord de US$8.000 millones en impuestos a la herencia"
+        "¿Cómo evitar las trampas de los hackers en eBay?",
+        "¿Por qué internet en Venezuela es tan lento?",
+        "Cómo ocurrió la nueva filtración de fotos de  Kim Kardashian",
+        "Apple vendió 10 millones de unidades de iPhone 6 en su primer fin de semana",
+        "La sartén inteligente que puede revolucionar tu cocina",
+        "Así se ve una ciudad del futuro desde dentro de un drone",
+        "¿Es hora de decirle adiós al email?",
+        "Recrearán el Museo Británico en el video juego Minecraft"
       ],
       "links": [
-        "https://www.bbc.com/mundo/articles/c232n8dr051o?at_medium=RSS&at_campaign=rss",
-        "https://www.bbc.com/mundo/articles/c759nn17x91o?at_medium=RSS&at_campaign=rss",
-        "https://www.bbc.com/mundo/articles/cr5p3e38yp8o?at_medium=RSS&at_campaign=rss",
-        "https://www.bbc.com/mundo/articles/c93xld9zv3xo?at_medium=RSS&at_campaign=rss",
-        "https://www.bbc.com/mundo/articles/cx21413501lo?at_medium=RSS&at_campaign=rss",
-        "https://www.bbc.com/mundo/articles/cj3pe11lpylo?at_medium=RSS&at_campaign=rss",
-        "https://www.bbc.com/mundo/articles/czx2k5d56x6o?at_medium=RSS&at_campaign=rss",
-        "https://www.bbc.com/mundo/articles/c79419z9102o?at_medium=RSS&at_campaign=rss"
+        "http://www.bbc.co.uk/mundo/noticias/2014/09/140923_tecnologia_ebay_seguridad_problemas_ig.shtml",
+        "http://www.bbc.co.uk/mundo/noticias/2014/09/140922_venezuela_internet_lento_dp.shtml",
+        "http://www.bbc.co.uk/mundo/noticias/2014/09/140922_filtracion_fotos_kardashian_ocurrio_nc.shtml",
+        "http://www.bbc.co.uk/mundo/ultimas_noticias/2014/09/140922_ultnot_apple_vende_10_millones_iphone_amv.shtml",
+        "http://www.bbc.co.uk/mundo/noticias/2014/09/140922_tecnologia_sarten_inteligente_cocina_ig.shtml",
+        "http://www.bbc.co.uk/mundo/video_fotos/2014/09/140916_video_tegnologia_ciudad_drones_ig.shtml",
+        "http://www.bbc.co.uk/mundo/noticias/2014/09/140919_vida_sin_email_finde_dv.shtml",
+        "http://www.bbc.co.uk/mundo/ultimas_noticias/2014/09/140922_ultnot_museo_britanico_minecraft_nc.shtml"
       ],
       "published": [
-        "Tue, 05 May 2026 18:43:12 GMT",
-        "Tue, 05 May 2026 12:21:01 GMT",
-        "Tue, 05 May 2026 16:21:52 GMT",
-        "Tue, 05 May 2026 18:35:47 GMT",
-        "Tue, 05 May 2026 09:49:58 GMT",
-        "Tue, 05 May 2026 11:11:05 GMT",
-        "Tue, 05 May 2026 01:05:26 GMT",
-        "Mon, 04 May 2026 16:44:13 GMT"
+        "2014-09-23T10:36:00+00:00",
+        "2014-09-22T23:06:44+00:00",
+        "2014-09-22T14:23:01+00:00",
+        "2014-09-22T17:33:48+00:00",
+        "2014-09-22T09:44:38+00:00",
+        "2014-09-16T15:12:25+00:00",
+        "2014-09-19T10:11:58+00:00",
+        "2014-09-22T07:45:19+00:00"
       ],
       "error": null,
-      "duration_s": 0.531,
+      "duration_s": 0.516,
       "thread": "MainThread",
-      "total_items_in_feed": 56
+      "total_items_in_feed": 100
     },
     {
       "site": "TechCrunch AI",
       "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
       "lang": "en",
       "headlines": [
-        "Apple plans to make iOS 27 a Choose Your Own Adventure of AI models",
-        "ASML CEO Christophe Fouquet on his company’s monopoly: no one is coming for us",
-        "Pennsylvania sues Character.AI after a chatbot allegedly posed as a doctor",
-        "OpenAI releases GPT-5.5 Instant, a new default model for ChatGPT",
-        "PayPal says it’s ‘becoming a technology company again’ — that means AI",
-        "Etsy launches its app within ChatGPT as it continues its AI push",
-        "Meta will use AI to analyze height and bone structure to identify if users are underage",
-        "ElevenLabs lists BlackRock, Jamie Foxx, and Eva Longoria as new investors"
+        "How Elon Musk left OpenAI, according to Greg Brockman",
+        "SpaceX may spend up to $119B on ‘Terafab’ chip factory in Texas",
+        "DeepSeek could hit $45B valuation from its first investment round",
+        "Google updates AI search to include quotes from Reddit and other sources",
+        "Khosla-backed robotics startup Genesis AI has gone full stack, demo shows",
+        "Tinder owner Match Group is slowing hiring to pay for its increased use of AI tools",
+        "Apple to pay $250M to settle lawsuit over Siri’s delayed AI features",
+        "Ethos raises $22.75M from a16z for its expert network with voice onboarding"
       ],
       "links": [
-        "https://techcrunch.com/2026/05/05/apple-plans-to-make-ios-27-a-choose-your-own-adventure-of-ai-models/",
-        "https://techcrunch.com/2026/05/05/asml-ceo-christophe-fouquet-no-one-is-coming-for-us/",
-        "https://techcrunch.com/2026/05/05/pennsylvania-sues-character-ai-after-a-chatbot-allegedly-posed-as-a-doctor/",
-        "https://techcrunch.com/2026/05/05/openai-releases-gpt-5-5-instant-a-new-default-model-for-chatgpt/",
-        "https://techcrunch.com/2026/05/05/paypal-says-its-becoming-a-technology-company-again-that-means-ai/",
-        "https://techcrunch.com/2026/05/05/etsy-launches-its-app-within-chatgpt-as-it-continues-its-ai-push/",
-        "https://techcrunch.com/2026/05/05/meta-will-use-ai-to-analyze-height-and-bone-structure-to-identify-if-users-are-underage/",
-        "https://techcrunch.com/2026/05/05/elevenlabs-lists-blackrock-jamie-foxx-and-eva-longoria-as-new-investors/"
+        "https://techcrunch.com/2026/05/06/how-elon-musk-left-openai-according-to-greg-brockman/",
+        "https://techcrunch.com/2026/05/06/spacex-may-spend-up-to-119-billion-on-terafab-chip-factory-in-texas/",
+        "https://techcrunch.com/2026/05/06/deepseek-could-hit-45b-valuation-from-its-first-investment-round/",
+        "https://techcrunch.com/2026/05/06/google-updates-ai-search-to-include-expert-advice-from-reddit-and-other-web-forums/",
+        "https://techcrunch.com/2026/05/06/khosla-backed-robotics-startup-genesis-ai-has-gone-full-stack-demo-shows/",
+        "https://techcrunch.com/2026/05/06/tinder-owner-match-group-is-slowing-hiring-to-pay-for-its-increased-use-of-ai-tools/",
+        "https://techcrunch.com/2026/05/06/apple-to-pay-250m-to-settle-lawsuit-over-siris-delayed-ai-features/",
+        "https://techcrunch.com/2026/05/06/ethos-raises-22-75m-from-a16z-for-its-expert-network-with-voice-onboarding/"
       ],
       "published": [
-        "Tue, 05 May 2026 20:56:41 +0000",
-        "Tue, 05 May 2026 20:06:40 +0000",
-        "Tue, 05 May 2026 17:46:10 +0000",
-        "Tue, 05 May 2026 17:00:00 +0000",
-        "Tue, 05 May 2026 15:49:55 +0000",
-        "Tue, 05 May 2026 15:31:37 +0000",
-        "Tue, 05 May 2026 14:27:00 +0000",
-        "Tue, 05 May 2026 14:20:50 +0000"
+        "Wed, 06 May 2026 18:23:54 +0000",
+        "Wed, 06 May 2026 17:23:08 +0000",
+        "Wed, 06 May 2026 17:20:34 +0000",
+        "Wed, 06 May 2026 15:49:39 +0000",
+        "Wed, 06 May 2026 15:46:38 +0000",
+        "Wed, 06 May 2026 15:27:36 +0000",
+        "Wed, 06 May 2026 15:12:49 +0000",
+        "Wed, 06 May 2026 15:00:00 +0000"
       ],
       "error": null,
-      "duration_s": 0.303,
+      "duration_s": 0.195,
       "thread": "MainThread",
       "total_items_in_feed": 20
     },
@@ -234,7 +234,7 @@
         "Mon, 05 Jan 2026 07:45:00 GMT"
       ],
       "error": null,
-      "duration_s": 0.854,
+      "duration_s": 0.701,
       "thread": "MainThread",
       "total_items_in_feed": 7
     },
@@ -243,37 +243,37 @@
       "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
       "lang": "en",
       "headlines": [
+        "Mira Murati tells the court that she couldn’t trust Sam Altman’s words",
+        "Live updates from Elon Musk and Sam Altman’s court battle over the future of OpenAI",
+        "Google&#8217;s AI search summaries will now quote Reddit",
+        "Microsoft’s Office and LinkedIn chief now runs Teams in latest reshuffle",
+        "Chrome’s AI features may be hogging 4GB of your computer storage",
         "Google Home&#8217;s Gemini AI can handle more complicated requests",
         "Apple agrees to pay iPhone owners $250 million for not delivering AI Siri",
-        "Microsoft gives up on Xbox Copilot AI",
-        "Apple could let you pick a favorite AI model in iOS 27",
-        "Live updates from Elon Musk and Sam Altman’s court battle over the future of OpenAI",
-        "OpenAI claims ChatGPT’s new default model hallucinates way less",
-        "Book publishers sue Meta over AI&#8217;s &#8216;word-for-word&#8217; copying",
-        "OpenAI is reportedly launching a phone for ChatGPT"
+        "Microsoft gives up on Xbox Copilot AI"
       ],
       "links": [
+        "https://www.theverge.com/ai-artificial-intelligence/925338/openai-musk-v-altman-mira-murati",
+        "https://www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
+        "https://www.theverge.com/tech/924993/google-ai-search-mode-overviews-update-reddit-links",
+        "https://www.theverge.com/tech/924931/microsoft-office-copilot-windows-reorg-shuffle",
+        "https://www.theverge.com/tech/924933/google-chrome-4gb-gemini-nano-ai-features",
         "https://www.theverge.com/tech/924755/google-home-gemini-3-1-upgrade",
         "https://www.theverge.com/tech/924706/apple-iphone-siri-intelligence-class-action-lawsuit-settlement",
-        "https://www.theverge.com/games/924551/microsoft-xbox-ceo-copilot-ai-asha-sharma",
-        "https://www.theverge.com/tech/924515/apple-intelligence-third-party-chatbot-extensions-ios-27",
-        "https://www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
-        "https://www.theverge.com/ai-artificial-intelligence/924225/openai-chatgpt-default-model-gpt-5-5-instant",
-        "https://www.theverge.com/tech/924230/meta-publishers-lawsuit-ai-copyright",
-        "https://www.theverge.com/ai-artificial-intelligence/924063/openai-phone-rumors-2027-ming-chi-kuo"
+        "https://www.theverge.com/games/924551/microsoft-xbox-ceo-copilot-ai-asha-sharma"
       ],
       "published": [
+        "2026-05-06T13:55:53-04:00",
+        "2026-05-06T11:37:32-04:00",
+        "2026-05-06T09:00:30-04:00",
+        "2026-05-06T07:45:41-04:00",
+        "2026-05-06T06:13:09-04:00",
         "2026-05-05T17:46:04-04:00",
         "2026-05-05T17:18:23-04:00",
-        "2026-05-05T15:54:37-04:00",
-        "2026-05-05T15:45:30-04:00",
-        "2026-05-05T13:28:52-04:00",
-        "2026-05-05T13:00:00-04:00",
-        "2026-05-05T12:52:38-04:00",
-        "2026-05-05T10:54:00-04:00"
+        "2026-05-05T15:54:37-04:00"
       ],
       "error": null,
-      "duration_s": 0.561,
+      "duration_s": 0.324,
       "thread": "MainThread",
       "total_items_in_feed": 10
     },
@@ -282,37 +282,37 @@
       "url": "https://feeds.arstechnica.com/arstechnica/technology-lab",
       "lang": "en",
       "headlines": [
+        "Ars Asks: Share your shell and show us your tricked-out terminals!",
         "Widely used Daemon Tools disk app backdoored in monthlong supply-chain attack",
         "Why Reddit blocked my daily visit to its mobile website",
         "GameStop offers $56 billion for eBay, struggles to explain how it'll pay for it",
         "Ubuntu infrastructure has been down for more than a day",
         "The most severe Linux threat to surface in years catches the world flat-footed",
         "Why a recent supply-chain attack singled out security firms Checkmarx and Bitwarden",
-        "Open source package with 1 million monthly downloads stole user credentials",
-        "Why are top university websites serving porn? It comes down to shoddy housekeeping."
+        "Open source package with 1 million monthly downloads stole user credentials"
       ],
       "links": [
+        "https://arstechnica.com/information-technology/2026/05/ars-asks-share-your-shell-and-show-us-your-tricked-out-terminals/",
         "https://arstechnica.com/security/2026/05/widely-used-daemon-tools-disk-app-backdoored-in-monthlong-supply-chain-attack/",
         "https://arstechnica.com/information-technology/2026/05/why-reddit-blocked-my-daily-visit-to-its-mobile-website/",
         "https://arstechnica.com/tech-policy/2026/05/gamestop-offers-56-billion-for-ebay-struggles-to-explain-how-itll-pay-for-it/",
         "https://arstechnica.com/security/2026/05/ubuntu-infrastructure-has-been-down-for-more-than-a-day/",
         "https://arstechnica.com/security/2026/04/as-the-most-severe-linux-threat-in-years-surfaces-the-world-scrambles/",
         "https://arstechnica.com/information-technology/2026/04/why-a-recent-supply-chain-attack-singled-out-security-firms-checkmarx-and-bitwarden/",
-        "https://arstechnica.com/security/2026/04/open-source-package-with-1-million-monthly-downloads-stole-user-credentials/",
-        "https://arstechnica.com/security/2026/04/why-are-top-university-websites-serving-porn-it-comes-down-to-shoddy-housekeeping/"
+        "https://arstechnica.com/security/2026/04/open-source-package-with-1-million-monthly-downloads-stole-user-credentials/"
       ],
       "published": [
+        "Wed, 06 May 2026 13:32:47 +0000",
         "Tue, 05 May 2026 19:46:15 +0000",
         "Tue, 05 May 2026 11:20:08 +0000",
         "Mon, 04 May 2026 17:57:46 +0000",
         "Fri, 01 May 2026 19:12:26 +0000",
         "Thu, 30 Apr 2026 20:20:48 +0000",
         "Wed, 29 Apr 2026 11:00:24 +0000",
-        "Mon, 27 Apr 2026 21:04:03 +0000",
-        "Fri, 24 Apr 2026 19:00:39 +0000"
+        "Mon, 27 Apr 2026 21:04:03 +0000"
       ],
       "error": null,
-      "duration_s": 0.906,
+      "duration_s": 0.262,
       "thread": "MainThread",
       "total_items_in_feed": 20
     },
@@ -321,37 +321,37 @@
       "url": "https://www.wired.com/feed/tag/ai/latest/rss",
       "lang": "en",
       "headlines": [
-        "Google DeepMind Workers Vote to Unionize Over Military AI Deals",
-        "He Couldn’t Land a Job Interview. Was AI to Blame?",
-        "Greg Brockman Defends $30B OpenAI Stake: ‘Blood, Sweat, and Tears’",
-        "Disneyland Now Uses Face Recognition on Visitors",
-        "A Dark-Money Campaign Is Paying Influencers to Frame Chinese AI as a Threat",
-        "How Shivon Zilis Operated as Elon Musk’s OpenAI Insider",
-        "Good Luck Getting a Mac Mini for the Next ‘Several Months’",
-        "Musk v. Altman Kicks Off, DOJ Guts Voting Rights Unit, and Is the AI Job Apocalypse Overhyped?"
+        "Anthropic Gets in Bed With SpaceX as the AI Race Turns Weird",
+        "Using AI for Just 10 Minutes Might Make You Lazy and Dumb, Study Shows",
+        "I Am Begging AI Companies to Stop Naming Features After Human Processes",
+        "Hackers Hate AI Slop Even More Than You Do",
+        "Apple Will Pay $250 Million to Settle Lawsuit Over Siri’s AI Features",
+        "Hasan Piker, Self-Described ‘Ayatollah of Woke,’ Wants AI to Die",
+        "‘I Actually Thought He Was Going to Hit Me,’ OpenAI’s Greg Brockman Says of Elon Musk",
+        "Google DeepMind Workers Vote to Unionize Over Military AI Deals"
       ],
       "links": [
-        "https://www.wired.com/story/google-deepmind-workers-vote-to-unionize-over-military-ai-deals/",
-        "https://www.wired.com/story/he-couldnt-land-a-job-interview-was-ai-to-blame/",
-        "https://www.wired.com/story/greg-brockman-testifies-musk-v-altman-trial/",
-        "https://www.wired.com/story/security-news-this-week-disneyland-now-uses-face-recognition-on-visitors/",
-        "https://www.wired.com/story/super-pac-backed-by-openai-and-palantir-is-paying-tiktok-influencers-to-fear-monger-about-china/",
-        "https://www.wired.com/story/model-behavior-why-everything-in-musk-v-altman-leads-back-to-shivon-zelis/",
-        "https://www.wired.com/story/apple-sold-out-mac-mini-openclaw/",
-        "https://www.wired.com/story/uncanny-valley-podcast-musk-v-altman-doj-guts-voting-rights-unit-is-ai-job-apocalypse-overhyped/"
+        "https://www.wired.com/story/anthropic-spacex-compute-deal-colossus/",
+        "https://www.wired.com/story/using-ai-negative-impact-thinking-problem-solving-study/",
+        "https://www.wired.com/story/i-am-begging-ai-companies-to-stop-naming-features-after-human-processes/",
+        "https://www.wired.com/story/cybercriminals-are-complaining-about-ai-slop-flooding-their-forums/",
+        "https://www.wired.com/story/apple-will-pay-dollar250-million-to-settle-lawsuit-over-siris-ai-features/",
+        "https://www.wired.com/story/hasan-piker-user-behavior/",
+        "https://www.wired.com/story/greg-brockman-testifies-elon-musk-fight-trial/",
+        "https://www.wired.com/story/google-deepmind-workers-vote-to-unionize-over-military-ai-deals/"
       ],
       "published": [
-        "Tue, 05 May 2026 11:59:20 +0000",
-        "Tue, 05 May 2026 10:00:00 +0000",
-        "Mon, 04 May 2026 23:19:52 +0000",
-        "Sat, 02 May 2026 10:30:00 +0000",
-        "Fri, 01 May 2026 20:25:28 +0000",
-        "Fri, 01 May 2026 00:51:18 +0000",
-        "Thu, 30 Apr 2026 23:00:51 +0000",
-        "Thu, 30 Apr 2026 18:54:54 +0000"
+        "Wed, 06 May 2026 18:28:52 +0000",
+        "Wed, 06 May 2026 18:00:00 +0000",
+        "Wed, 06 May 2026 16:51:12 +0000",
+        "Wed, 06 May 2026 15:49:12 +0000",
+        "Wed, 06 May 2026 10:41:37 +0000",
+        "Wed, 06 May 2026 10:00:00 +0000",
+        "Tue, 05 May 2026 23:24:58 +0000",
+        "Tue, 05 May 2026 11:59:20 +0000"
       ],
       "error": null,
-      "duration_s": 0.444,
+      "duration_s": 0.218,
       "thread": "MainThread",
       "total_items_in_feed": 10
     },
@@ -390,7 +390,7 @@
         "Mon, 27 Apr 2026 22:52:57 +0000"
       ],
       "error": null,
-      "duration_s": 0.413,
+      "duration_s": 0.304,
       "thread": "MainThread",
       "total_items_in_feed": 10
     },
@@ -398,77 +398,50 @@
       "site": "MarkTechPost",
       "url": "https://www.marktechpost.com/feed/",
       "lang": "en",
-      "headlines": [
-        "Closing the ‘Expressivity Gap’: How Mistral’s Voxtral TTS is Redefining Multilingual Voice Cloning with a Hybrid Autoregressive and Flow-Matching Architecture",
-        "Build a Modular Skill-Based Agent System for LLMs with Dynamic Tool Routing in Python",
-        "Why Gradient Descent Zigzags and How Momentum Fixes It",
-        "Google Adds Event-Driven Webhooks to the Gemini API, Eliminating the Need for Polling in Long-Running AI Jobs",
-        "A Coding Guide to Survey Bias Correction Using Facebook Research Balance with IPW CBPS Ranking and Post Stratification Methods",
-        "Zyphra Introduces Tensor and Sequence Parallelism (TSP): A Hardware-Aware Training and Inference Strategy That Delivers 2.6x Throughput Over Matched TP+SP Baselines",
-        "How to Build an End-to-End Production Grade Machine Learning Pipeline with ZenML, Including Custom Materializers, Metadata Tracking, and Hyperparameter Optimization",
-        "Top Search and Fetch APIs for Building AI Agents in 2026: Tools, Tradeoffs, and Free Tiers"
-      ],
-      "links": [
-        "https://www.marktechpost.com/2026/05/05/closing-the-expressivity-gap-how-mistrals-voxtral-tts-is-redefining-multilingual-voice-cloning-with-a-hybrid-autoregressive-and-flow-matching-architecture/",
-        "https://www.marktechpost.com/2026/05/05/build-a-modular-skill-based-agent-system-for-llms-with-dynamic-tool-routing-in-python/",
-        "https://www.marktechpost.com/2026/05/05/why-gradient-descent-zigzags-and-how-momentum-fixes-it/",
-        "https://www.marktechpost.com/2026/05/05/google-adds-event-driven-webhooks-to-the-gemini-api-eliminating-the-need-for-polling-in-long-running-ai-jobs/",
-        "https://www.marktechpost.com/2026/05/04/a-coding-guide-to-survey-bias-correction-using-facebook-research-balance-with-ipw-cbps-ranking-and-post-stratification-methods/",
-        "https://www.marktechpost.com/2026/05/04/zyphra-introduces-tensor-and-sequence-parallelism-tsp-a-hardware-aware-training-and-inference-strategy-that-delivers-2-6x-throughput-over-matched-tpsp-baselines/",
-        "https://www.marktechpost.com/2026/05/04/how-to-build-an-end-to-end-production-grade-machine-learning-pipeline-with-zenml-including-custom-materializers-metadata-tracking-and-hyperparameter-optimization/",
-        "https://www.marktechpost.com/2026/05/04/top-search-and-fetch-apis-for-building-ai-agents-in-2026-tools-tradeoffs-and-free-tiers/"
-      ],
-      "published": [
-        "Tue, 05 May 2026 21:11:42 +0000",
-        "Tue, 05 May 2026 20:47:25 +0000",
-        "Tue, 05 May 2026 07:26:29 +0000",
-        "Tue, 05 May 2026 07:01:53 +0000",
-        "Tue, 05 May 2026 04:46:45 +0000",
-        "Mon, 04 May 2026 23:15:49 +0000",
-        "Mon, 04 May 2026 22:11:37 +0000",
-        "Mon, 04 May 2026 17:55:35 +0000"
-      ],
-      "error": null,
-      "duration_s": 0.538,
+      "headlines": [],
+      "links": [],
+      "published": [],
+      "error": "XML invalido sin entradas recuperables: <unknown>:2:119: not well-formed (invalid token)",
+      "duration_s": 0.188,
       "thread": "MainThread",
-      "total_items_in_feed": 10
+      "total_items_in_feed": 0
     },
     {
       "site": "TNW Neural",
       "url": "https://thenextweb.com/neural/feed/",
       "lang": "en",
       "headlines": [
-        "AI-native spending surged 94 per cent. Traditional SaaS grew at eight. The enterprise software industry is watching the clock.",
-        "The designer whose Tropicana rebrand crashed sales 20 per cent is now branding the US government. He has two months.",
-        "Volkswagen just became Rivian’s biggest investor. It is not buying trucks. It is buying the software its own engineers could not build.",
-        "A chatbot told a state investigator it was a licensed psychiatrist. It gave a fake licence number. Pennsylvania just sued.",
-        "Duolingo beat every estimate Wall Street had. Then it told investors it was going to slow down on purpose. The stock dropped 14 per cent.",
-        "He carried a kill list of AI CEOs and a jug of kerosene. His lawyer called it a property crime. The charges carry life in prison.",
-        "The recycling industry loses 40 per cent of its workers every year. A humanoid robot trained by VR headsets is the replacement plan.",
-        "In April 2025, Intel was trading at $18. Fourteen months later it hit an all-time high. The turnaround was not built by Intel alone."
+        "Google offers EU concessions on news-search ranking to head off a fresh DMA fine",
+        "Supreme Court refuses to pause the order holding Apple in contempt in the Epic case",
+        "Anthropic raises Claude Code and Opus API rate limits, citing SpaceX Colossus 1 deal",
+        "Ethos lands $22.75m Series A to fix what AI broke about hiring",
+        "NVIDIA takes warrants for $500m in Corning stock as fibre-optics partnership goes structural",
+        "SpaceX files for a $55bn Texas semiconductor fab, with combined chipmaking investment reaching $119bn",
+        "Chinese chamber of commerce puts a $432bn price tag on the EU’s cybersecurity overhaul",
+        "Hut 8 signs a 15-year, $9.8bn lease for the first phase of its Texas AI data centre"
       ],
       "links": [
-        "https://thenextweb.com/news/saas-stagnation-ai-native-agentic-enterprise-spend",
-        "https://thenextweb.com/news/us-chief-brand-architect-arnell-gebbia-government-design",
-        "https://thenextweb.com/news/volkswagen-rivian-top-shareholder-amazon-software",
-        "https://thenextweb.com/news/pennsylvania-character-ai-chatbot-doctor-lawsuit",
-        "https://thenextweb.com/news/duolingo-engagement-over-monetization-ai-language",
-        "https://thenextweb.com/news/altman-attack-moreno-gama-plea-anti-ai-backlash",
-        "https://thenextweb.com/news/recycling-humanoid-robots-waste-labour-crisis",
-        "https://thenextweb.com/news/intel-stock-record-apple-foundry-ai-turnaround"
+        "https://thenextweb.com/news/google-offers-eu-concessions-on-news-search-ranking-to-head-off-a-fresh-dma-fine",
+        "https://thenextweb.com/news/supreme-court-apple-epic-contempt-stay-denial",
+        "https://thenextweb.com/news/anthropic-claude-code-rate-limits-spacex-colossus-1",
+        "https://thenextweb.com/news/ethos-22-75m-series-a-a16z-ai-expert-matching",
+        "https://thenextweb.com/news/nvidia-corning-500m-warrant-fiber-optics-partnership",
+        "https://thenextweb.com/news/spacex-terafab-55-billion-texas-chip-plant",
+        "https://thenextweb.com/news/eu-cybersecurity-china-suppliers-432-billion-cost-study",
+        "https://thenextweb.com/news/hut-8-beacon-point-9-8-billion-ai-lease-texas"
       ],
       "published": [
-        "Tue, 05 May 2026 21:14:16 +0000",
-        "Tue, 05 May 2026 21:09:50 +0000",
-        "Tue, 05 May 2026 20:50:54 +0000",
-        "Tue, 05 May 2026 19:56:41 +0000",
-        "Tue, 05 May 2026 19:50:14 +0000",
-        "Tue, 05 May 2026 19:17:31 +0000",
-        "Tue, 05 May 2026 18:50:01 +0000",
-        "Tue, 05 May 2026 18:27:53 +0000"
+        "Wed, 06 May 2026 17:57:42 +0000",
+        "Wed, 06 May 2026 17:27:45 +0000",
+        "Wed, 06 May 2026 16:48:07 +0000",
+        "Wed, 06 May 2026 15:00:00 +0000",
+        "Wed, 06 May 2026 13:38:03 +0000",
+        "Wed, 06 May 2026 13:10:43 +0000",
+        "Wed, 06 May 2026 12:52:48 +0000",
+        "Wed, 06 May 2026 12:26:05 +0000"
       ],
       "error": null,
-      "duration_s": 1.733,
+      "duration_s": 0.754,
       "thread": "MainThread",
       "total_items_in_feed": 10
     }
