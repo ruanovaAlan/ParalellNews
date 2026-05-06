@@ -1,5 +1,6 @@
 """
-app.py — Servidor web Flask para ParallelNews Scraper
+app.py — Servidor Flask para ParallelNews Scraper.
+Expone rutas para scraping paralelo, benchmarking y servir gráficas.
 """
 
 import json
@@ -23,6 +24,7 @@ NUM_WORKERS = 6
 
 
 def run_parallel(num_workers=NUM_WORKERS, max_concurrent=5):
+    """Scrape todos los feeds en paralelo con `num_workers` hilos."""
     url_queue = queue.Queue()
     results   = {}
     lock      = threading.Lock()
@@ -49,6 +51,7 @@ def run_parallel(num_workers=NUM_WORKERS, max_concurrent=5):
 
 
 def run_sequential():
+    """Scrape todos los feeds uno por uno. Sirve como línea base para el benchmark."""
     results = {}
     with Timer() as t:
         for url in ALL_URLS:
@@ -68,16 +71,19 @@ def run_sequential():
 
 @app.route("/")
 def index():
+    """Página principal."""
     return render_template("index.html", feeds=len(SOURCES), workers=NUM_WORKERS)
 
 
 @app.route("/benchmark")
 def benchmark_page():
+    """Página de benchmarking."""
     return render_template("benchmark.html")
 
 
 @app.route("/api/scrape")
 def api_scrape():
+    """Ejecuta el scraping paralelo y devuelve artículos + métricas en JSON."""
     results, metrics = run_parallel(num_workers=NUM_WORKERS)
     save_results(results, metrics)
 
@@ -108,6 +114,7 @@ def api_scrape():
 
 @app.route("/api/benchmark")
 def api_benchmark():
+    """Compara rendimiento secuencial vs. paralelo (2, 4, 6, 8 workers) y genera gráficas."""
     _, seq = run_sequential()
     seq.compute_derived()
 
@@ -136,9 +143,9 @@ def api_benchmark():
     }, "parallel": parallel_data})
 
 
-# Servir PNGs generados por matplotlib
 @app.route("/results/<path:filename>")
 def serve_results(filename):
+    """Sirve las gráficas PNG generadas en la carpeta results/."""
     return send_from_directory(RESULTS_DIR, filename)
 
 
